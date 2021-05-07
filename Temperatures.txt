@@ -1,0 +1,74 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define NUMS 4 //If we want to change the value of days is simple with this way (magic numbers)
+
+int main(void)
+{
+int htemp, i, ltemp, lowest = 40, highest = -40, hday, lday;
+double avgh, avgl, avgt,sumt =0, sumh =0, suml = 0;
+
+printf("---=== IPC Temperature Analyzer ===---"); //Outputing the command given by the workshop
+
+for (i = 1; i<= NUMS; i++) //Open a loop to repeat the next steps for n (n=NUMS) times
+
+{
+{
+printf("\nEnter the high value for day %d: ", i);
+scanf("%d", &htemp);
+
+printf("\nEnter the low value for day %d: ", i);
+scanf("%d", &ltemp);
+
+while (htemp > 40 || ltemp < -40 || htemp < ltemp)
+{
+printf("\nIncorrect values, temperatures must be in the range -40 to 40, high must be greater than low.\n");
+{
+printf("\nEnter the high value for day %d: ", i);
+scanf("%d", &htemp);
+
+printf("\nEnter the low value for day %d: ", i);
+scanf("%d", &ltemp);
+}
+}
+
+
+if (htemp > highest) //condition to declare the highest temp. and highest temp. day
+{
+highest = htemp;
+hday = i;
+}
+if (ltemp < lowest) //condition to declare the lowest temp. and the lowest temp. day
+{
+lowest = ltemp;
+lday = i;
+}
+
+sumh += htemp;
+avgh = sumh / NUMS;
+
+suml += ltemp;
+avgl = suml / NUMS;
+
+sumt = suml + sumh;
+avgt = sumt / (NUMS *2);
+}
+}
+
+{
+//printf("\nsumh = %.2lf", sumh); //check the sumh value
+printf("\nThe average (mean) LOW temperature was %.2lf: ", avgl);
+
+//printf("\nsuml = %.2lf", suml); //check the suml value
+printf("\nThe average (mean) HIGH temperature was %.2lf: ", avgh);
+
+//printf("\nsumt = %.2lf", sumt); //check the sumt value
+printf("\nThe average (mean) temperature was %.2lf: ", avgt);
+
+printf("\nThe highest temperature was %d, on day %d", highest, hday);
+
+printf("\nThe lowest temperature was %d, on day %d", lowest, lday);
+}
+
+return 0;
+
+}
