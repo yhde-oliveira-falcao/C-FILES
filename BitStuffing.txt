@@ -1,0 +1,50 @@
+#include <stdio.h>   
+int main(void)
+{ // ARRAY DECLARATION!!!
+    int n = 15;
+    int ARRAY[] = {0,1,1,1,1,1,1,0,1,1,1,1,1,1,0}; //Declaration of an array.
+    int i;
+    int count = 0;
+    //
+    printf("Before Stuffing: \t");
+    for(i = 0; i < n; i++){
+	printf("%d ", ARRAY[i]);
+    }
+    printf("\t\t\t -- %d characters\n", n);
+    printf("After Stuffing: \t");
+    for(i = 0; i < n; i++){ //will repeat in this condition
+	int sum = 0;
+	sum = ARRAY[i] +ARRAY[i+1] +ARRAY[i+2] +ARRAY[i+3] +ARRAY[i+4];
+	if (sum == 5){
+		n++;
+		int j;
+		for(j = n; j > (i + 2) ; j--){
+		ARRAY[j] = ARRAY[j-1];	
+	}
+	ARRAY[i+5] = 0;
+	count = 0;
+    }
+        printf("%d ", ARRAY[i]);
+    }
+	printf("\t -- %d characters\n", n);
+	int FLAG[]={0,1,1,1,1,1,1,0};
+	int flagsize = 8;
+	n += (2 * flagsize);
+	int k;
+	//printf("%d \n", n);
+	for(k = n; k > 25; k--){
+		ARRAY[k] = FLAG[k-(n - flagsize)];
+	}
+	for(k = (n - flagsize); k >= flagsize; k--){
+		ARRAY[k] = ARRAY[k - flagsize];
+	}
+	for(k = 0; k < flagsize; k++){
+		ARRAY[k] = FLAG[k];
+	}
+	printf("After framing: ");
+	for(k = 0; k < n; k++){
+		printf("%d ", ARRAY[k]); 
+	}
+	printf("\n");
+    return 0; 
+}
